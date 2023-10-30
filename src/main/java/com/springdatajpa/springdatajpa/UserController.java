@@ -22,10 +22,18 @@ public class UserController {
         return userService.getAll();
     }
 
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable int id){
+       return userService.getUser(id);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void create(@RequestBody User user){
         userService.createUser(user);
     }
+
+
 
 }
