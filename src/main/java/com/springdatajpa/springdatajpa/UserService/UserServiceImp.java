@@ -1,9 +1,11 @@
 package com.springdatajpa.springdatajpa.UserService;
 
+import com.springdatajpa.springdatajpa.pojo.Account;
 import com.springdatajpa.springdatajpa.pojo.User;
 import com.springdatajpa.springdatajpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class UserServiceImp implements UserService{
 
     private UserRepository userRepository;
+
     @Autowired
-    private UserServiceImp(UserRepository userRepository){
+    public UserServiceImp(UserRepository userRepository){
         this.userRepository = userRepository;
+
     }
     @Override
     public List<User> getAll() {
@@ -32,4 +36,11 @@ public class UserServiceImp implements UserService{
         Optional<User> result = userRepository.findById(id);
         return result.orElse(null);
     }
+
+    @Override
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
+
 }

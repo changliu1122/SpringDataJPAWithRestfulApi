@@ -76,7 +76,7 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 6. restful api
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user")                                    
 public class UserController {
 
     private UserService userService;
